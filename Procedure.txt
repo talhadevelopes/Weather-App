@@ -1,0 +1,6 @@
+npm create vite@latest
+.
+React
+TypeScript
+npm instal
+-------------

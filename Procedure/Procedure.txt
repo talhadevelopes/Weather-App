@@ -8,3 +8,9 @@ Follow shadCN commands
 --> to use Icons : npm install react-icons
 ----------------------------------------------------------------------------
 #2 --- Setting up React Query:
+
+
+------------------------
+----------------------------------
+
+#3- Installation of  npm install recharts date-fns

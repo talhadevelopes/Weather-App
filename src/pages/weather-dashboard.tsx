@@ -8,6 +8,7 @@ import CurrentWeather from "@/components/ui/CurrentWeather";
 import HourlyTemperature from "@/components/ui/hourly-temperature";
 import WeatherDetails from "@/components/ui/weather-details";
 import WeatherForecast from "@/components/ui/weather-forecast";
+import FavouriteCities from "@/components/ui/FavouriteCities";
 
 const WeatherDashboard = () => {
   const { coordinates, error: locationError, getLocation, isLoading: locationLoading } = useGeolocation();
@@ -90,6 +91,10 @@ const WeatherDashboard = () => {
   return (
     <div className="space-y-4">
       {/* My Location Section */}
+
+<FavouriteCities />
+
+
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">
           My Location: {locationName?.name || "Unknown Location"}

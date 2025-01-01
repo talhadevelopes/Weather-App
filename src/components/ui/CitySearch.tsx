@@ -8,15 +8,16 @@ import {
 } from "@/components/ui/command";
 import { Button } from "./button";
 import { useState } from "react";
-import { Clock, Loader2, Search, XCircle } from "lucide-react";
+import { Clock, Loader2, Search, Star, XCircle } from "lucide-react";
 import { useLocationSearch } from "@/hooks/use-weather";
 import { CommandSeparator } from "cmdk";
-
+import { useFavourites } from "@/hooks/use-favourite";
 import { useNavigate } from "react-router-dom";
 import { useSearchHistory } from "@/hooks/use-search-hsitory";
 
 const CitySearch = () => {
   const [open, setOpen] = useState(false);
+  const { favourites } = useFavourites(); // Destructure favourites from useFavourites
   const [query, setQuery] = useState('');
   const { data: locations, isLoading } = useLocationSearch(query);
   const navigate = useNavigate();
@@ -62,10 +63,31 @@ const CitySearch = () => {
             <CommandEmpty>No results found.</CommandEmpty>
           )}
 
+
+{favourites.length > 0 && (
+            <>
+              <CommandSeparator />
+              <CommandGroup heading="Favourites">
+                {favourites.map((fav) => (
+                  <CommandItem
+                    key={fav.id} // Assuming 'id' is a unique identifier for favourites
+                    value={`${fav.name}, ${fav.country}`}
+                    onSelect={() => handleSelect(`${fav.lat}|${fav.lon}|${fav.name}|${fav.country}`)}
+                  >
+                    <Star className="mr-2 h-4 w-4 text-yellow-300" />
+                    <span>
+                      {fav.name}, {fav.country}
+                    </span>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </>
+          )}
+
           {history.length > 0 && (
             <>
               <CommandSeparator />
-              <CommandGroup heading="Recent Searches">
+              <CommandGroup>
                 <div className="flex items-center justify-between px-2 my-2">
                   <p className="text-xs text-muted-foreground">Recent Searches</p>
                   <Button
@@ -93,9 +115,10 @@ const CitySearch = () => {
             </>
           )}
 
+       
           <CommandSeparator />
           {/* Suggestions or Loading */}
-          <CommandGroup heading="Suggestions">
+          <CommandGroup>
             {isLoading && (
               <div className="flex items-center justify-center p-4">
                 <Loader2 className="h-4 w-4 animate-spin" />

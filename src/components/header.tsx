@@ -10,13 +10,15 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur py-2 supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to={'/'}>
+        <Link to={'/'} className='flex'>
           <img 
             src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-cloud-logo-vector-png-image_4135134.jpg" 
             alt="logo" 
             className="h-14" 
           />
+          <h1 className=' relative mt-3 ml-3 text-3xl font-bold'><span className='text-blue-300'>Weather</span> App</h1>
         </Link>
+        
 
 
         <CitySearch />

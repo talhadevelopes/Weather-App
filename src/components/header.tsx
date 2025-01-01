@@ -1,6 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Link } from 'react-router-dom';
+import CitySearch from './ui/CitySearch';
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -16,6 +17,9 @@ const Header = () => {
             className="h-14" 
           />
         </Link>
+
+
+        <CitySearch />
 
         <div>
           {/* Theme Toggle */}

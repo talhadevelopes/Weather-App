@@ -13,4 +13,4 @@ Follow shadCN commands
 ------------------------
 ----------------------------------
 
-#3- Installation of  npm install recharts date-fns
+#3- Installation of npm install recharts date-fns
